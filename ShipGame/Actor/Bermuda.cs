@@ -12,7 +12,7 @@ namespace ShipGame.Actor
     class Bermuda:GameObject
     {
         private IGameObjectMediator mediator;
-
+        int a;
         public Bermuda(Vector2 position, Vector2 origin,GameDevice gameDevice,
             IGameObjectMediator mediator)
             :base("blue",position ,0,origin,32,1280,gameDevice)
