@@ -63,7 +63,7 @@ namespace ShipGame.Scene
 
         public void Update(GameTime gameTime)
         {
-            if (Input.GetKeyTrigger(Keys.Space))
+            if (Input.GetKeyTrigger(Keys.Space)||Input.IsButtonDown(PlayerIndex.One,Buttons.Start))
             {
                 IsEndFlag = true;
             }
