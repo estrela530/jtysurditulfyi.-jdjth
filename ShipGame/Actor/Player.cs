@@ -27,7 +27,7 @@ namespace ShipGame.Actor
 
         public Player(Vector2 position, float rotation, Vector2 origin, GameDevice gameDevice,
             IGameObjectMediator mediator)
-            : base("ship2", position, rotation, origin, 32, 32, gameDevice)
+            : base("ship2", position, rotation, origin, 200, 200, gameDevice)
         {
             velocity = Vector2.Zero;
             isDeadFlag = false;
@@ -87,6 +87,7 @@ namespace ShipGame.Actor
             {
                 score+= gameObject.GetScore();
                 isRide = true;
+                velocity = Vector2.Zero;
             }
         }
         public void PlayerMove()

@@ -51,6 +51,7 @@ namespace ShipGame.Actor
             if (gameObject is Player)
             {
                 isRide = false;
+                velocity = Vector2.Zero;
             }
             if (gameObject is Bermuda)
             {
