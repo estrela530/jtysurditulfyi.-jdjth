@@ -48,7 +48,7 @@ namespace ShipGame.Scene
             //プレイヤーの生成
             player = new Player(startPlayerPosi, startPlayerRota,startOrigin, gameDevice, gameObjectManager);
 
-            ship = new Ship(new Vector2(), 0.0f, new Vector2(), gameDevice, gameObjectManager);
+            ship = new Ship(new Vector2(), 0.0f, new Vector2(), gameDevice, gameObjectManager,3);
 
             bermuda = new Bermuda(new Vector2(), new Vector2(),gameDevice, gameObjectManager);
 

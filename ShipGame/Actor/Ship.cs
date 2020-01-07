@@ -15,14 +15,15 @@ namespace ShipGame.Actor
     {
         private float speed = 4.0f;
         private IGameObjectMediator mediator;//ゲームオブジェクト仲介者
-
+        private int score;
         public Ship(Vector2 position, float rotation, Vector2 origin, GameDevice gameDevice,
-            IGameObjectMediator mediator)
+            IGameObjectMediator mediator,int score)
             : base("green", position, rotation, origin, 32, 32, gameDevice)
         {
             isDeadFlag = false;
             this.mediator = mediator;
             this.origin = new Vector2(16, 16);
+            this.score = score;
         }
 
         public override object Clone()
@@ -36,7 +37,7 @@ namespace ShipGame.Actor
         /// </summary>
         /// <param name="other"></param>
         public Ship(Ship other)
-            : this(other.position, other.rotation, other.origin, other.gameDevice, other.mediator)
+            : this(other.position, other.rotation, other.origin, other.gameDevice, other.mediator,0)
         {
 
         }
@@ -74,6 +75,10 @@ namespace ShipGame.Actor
         public override void Update(GameTime gameTime)
         {
             ShipMove();
+        }
+        public int Score()
+        {
+            return score;
         }
     }
 }

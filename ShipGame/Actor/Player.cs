@@ -20,6 +20,8 @@ namespace ShipGame.Actor
         //private Vector2 slideModify;
         //private bool isEndFlag;
         private float speed = 4.0f;
+        private float weight;
+        private int score;
         //private float rotation;
         private IGameObjectMediator mediator;//ゲームオブジェクト仲介者
         private double angle;
@@ -40,6 +42,8 @@ namespace ShipGame.Actor
             angle = -Math.PI / 2;
             flyingSpeed = 0;
 
+            weight = 0.0f;
+            score = 0;
         }
 
         public override object Clone()
@@ -72,21 +76,16 @@ namespace ShipGame.Actor
             //当たった方向の取得
             Direction dir = this.CheckDirection(gameObject);
 
-            //ゲームオブジェクトがだったら死ぬ
-            if (gameObject.ToString().Contains(""))
+            //ゲームオブジェクトがばみゅだったら死ぬ
+            if (gameObject is Bermuda)
             {
-                if (gameObject is Bermuda)
-                {
-                    isDeadFlag = true;
-                }
+                isDeadFlag = true;
             }
+            //他船とあたったらweightが上がる
+            if (gameObject is Ship)
+            {
 
-            //ゲームオブジェクトがブロックのオブジェクトか？
-            //if (gameObject.ToString().Contains(""))
-            //{
-            //    //プレイヤーとブロックの衝突面処理
-            //    HitBlock(gameObject);
-            //}
+            }
         }
         public void PlayerMove()
         {
@@ -114,12 +113,12 @@ namespace ShipGame.Actor
                 Console.WriteLine("direction = " + direction);
                 //Console.WriteLine("angle = " + angle);
             }
-           
+
             flyingSpeed += (float)Math.Sin(angle);
             //flyingSpeed = (float)Math.Sqrt(velocity.X * velocity.X + velocity.Y * velocity.Y); //velocityの大きさをflyingSpeedに入れる。
 
             velocity = flyingSpeed * direction;
-            
+
             if (stickDirection != Vector2.Zero)
             {
                 position += (velocity / 10);
