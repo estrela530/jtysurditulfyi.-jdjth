@@ -37,7 +37,7 @@ namespace ShipGame.Actor
             this.origin = new Vector2(16, 16);
             this.rotation = 0.0f;
 
-            angle = -Math.PI / 2;
+            angle = Math.PI / 2;
             flyingSpeed = 0;
 
         }
