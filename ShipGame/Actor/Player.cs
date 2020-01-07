@@ -75,7 +75,7 @@ namespace ShipGame.Actor
             //ゲームオブジェクトがだったら死ぬ
             if (gameObject.ToString().Contains(""))
             {
-                if (dir != Direction.Top)
+                if (gameObject is Bermuda)
                 {
                     isDeadFlag = true;
                 }
