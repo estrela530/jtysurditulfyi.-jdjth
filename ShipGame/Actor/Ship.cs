@@ -13,9 +13,8 @@ namespace ShipGame.Actor
 {
     class Ship : GameObject
     {
-        private float speed = 4.0f;
+        private float speed = 6.0f;
         private IGameObjectMediator mediator;//ゲームオブジェクト仲介者
-        private int score;
         public Ship(Vector2 position, float rotation, Vector2 origin, GameDevice gameDevice,
             IGameObjectMediator mediator,int score)
             : base("green", position, rotation, origin, 32, 32, gameDevice)
@@ -24,6 +23,7 @@ namespace ShipGame.Actor
             this.mediator = mediator;
             this.origin = new Vector2(16, 16);
             this.score = score;
+            isRide = true;
         }
 
         public override object Clone()
@@ -48,37 +48,30 @@ namespace ShipGame.Actor
         /// <param name="gameObject"></param>
         public override void Hit(GameObject gameObject)
         {
-            ////当たった方向の取得
-            //Direction dir = this.CheckDirection(gameObject);
-
-            ////ゲームオブジェクトがだったら死ぬ
-            //if (gameObject.ToString().Contains(""))
-            //{
-            //    if (dir != Direction.Top)
-            //    {
-            //        isDeadFlag = true;
-            //    }
-            //}
-
-            //ゲームオブジェクトがブロックのオブジェクトか？
-            //if (gameObject.ToString().Contains(""))
-            //{
-            //    //プレイヤーとブロックの衝突面処理
-            //    HitBlock(gameObject);
-            //}
+            if (gameObject is Player)
+            {
+                isRide = false;
+            }
+            if (gameObject is Bermuda)
+            {
+                isDeadFlag = true;
+            }
         }
         public void ShipMove()
         {
-            position.X += speed;
+            if (isRide)
+            {
+                position.X += speed/3f;
+            }
+            else
+            {
+                position.X += speed;
+            }
         }
 
         public override void Update(GameTime gameTime)
         {
             ShipMove();
-        }
-        public int Score()
-        {
-            return score;
         }
     }
 }

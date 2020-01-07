@@ -22,6 +22,10 @@ namespace ShipGame.Actor
         protected Vector2 origin;//回転軸の位置
         protected int width;//幅
         protected int height;//高さ
+        //
+        protected int score;
+        protected bool isRide;
+        //
         protected float rotation;
         protected bool isDeadFlag;//死亡フラグ
         protected GameDevice gameDevice;//ゲームデバイス
@@ -112,6 +116,18 @@ namespace ShipGame.Actor
         {
             return height;
         }
+
+        //
+        public int GetScore()
+        {
+            return score;
+        }
+
+        public bool IsRide()
+        {
+            return isRide;
+        }
+        //
 
         /// <summary>
         /// 当たり判定用、矩形情報の取得

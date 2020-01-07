@@ -16,13 +16,9 @@ namespace ShipGame.Actor
         private Vector2 direction;
         private Vector2 stickDirection;
         private double stickAngle;
-        //private Vector2 directionV;
-        //private Vector2 slideModify;
-        //private bool isEndFlag;
         private float speed = 4.0f;
         private float weight;
         private int score;
-        //private float rotation;
         private IGameObjectMediator mediator;//ゲームオブジェクト仲介者
         private double angle;
         private float flyingSpeed;
@@ -81,10 +77,16 @@ namespace ShipGame.Actor
             {
                 isDeadFlag = true;
             }
+            //島とあたったらweightが消える
+            if (gameObject is Island)
+            {
+                isRide = false ;
+            }
             //他船とあたったらweightが上がる
             if (gameObject is Ship)
             {
-
+                score+= gameObject.GetScore();
+                isRide = true;
             }
         }
         public void PlayerMove()
@@ -119,9 +121,13 @@ namespace ShipGame.Actor
 
             velocity = flyingSpeed * direction;
 
-            if (stickDirection != Vector2.Zero)
+            if (stickDirection != Vector2.Zero&&!isRide)
             {
                 position += (velocity / 10);
+            }
+            else if (stickDirection != Vector2.Zero )
+            {
+                position += (velocity / 35);
             }
             else
             {
@@ -131,6 +137,15 @@ namespace ShipGame.Actor
 
         public override void Update(GameTime gameTime)
         {
+            if (Input.IsButtonDown(PlayerIndex.One, Buttons.RightShoulder))
+            {
+                isRide = true;
+            }
+            if (Input.IsButtonDown(PlayerIndex.One, Buttons.LeftShoulder))
+            {
+                isRide = false;
+            }
+
             PlayerMove();
         }
     }
