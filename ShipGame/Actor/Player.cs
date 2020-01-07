@@ -88,6 +88,10 @@ namespace ShipGame.Actor
                 score+= gameObject.GetScore();
                 isRide = true;
                 velocity = Vector2.Zero;
+                if(stickAngle <=0)
+                {
+                    flyingSpeed = 0;
+                }
             }
         }
         public void PlayerMove()
