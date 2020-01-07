@@ -122,7 +122,7 @@ namespace ShipGame.Actor
             
             if (stickDirection != Vector2.Zero)
             {
-                position += (velocity / 5);
+                position += (velocity / 10);
             }
             else
             {
