@@ -56,7 +56,6 @@ namespace ShipGame.Actor
         public abstract object Clone();//ICloneableで必ず必要
         public abstract void Update(GameTime gameTime);//更新
         public abstract void Hit(GameObject gameObject);//ヒット通知
-
         //仮想メソッド
         /// <summary>
         /// 描画

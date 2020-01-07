@@ -92,19 +92,6 @@ namespace ShipGame.Actor
         }
         public void PlayerMove()
         {
-            //velocity.X = Input.GetLeftStickground(PlayerIndex.One).X* speed;
-            //if (Input.IsButtonPress(PlayerIndex.One,Buttons.B))
-            //{
-            //    velocity.Y = velocity.Y+ 1.1f; 
-            //}
-
-            //flyingSpeed = (float)Math.Sqrt(velocity.X * velocity.X + velocity.Y * velocity.Y); //velocityの大きさをflyingSpeedに入れる。
-
-
-            //velocity = Input.GetLeftStickladder(PlayerIndex.One) * speed;
-            //position = position - velocity;
-
-
             // 角度計算
             stickDirection = Input.GetLeftSticksky(PlayerIndex.One);
             stickAngle = Math.Atan2(stickDirection.X, stickDirection.Y);
@@ -128,7 +115,7 @@ namespace ShipGame.Actor
             }
             else if (stickDirection != Vector2.Zero )
             {
-                position += (velocity / 35);
+                position += (velocity / 25);
             }
             else
             {
@@ -146,6 +133,7 @@ namespace ShipGame.Actor
             {
                 isRide = false;
             }
+            //position.X += 2;
 
             PlayerMove();
         }

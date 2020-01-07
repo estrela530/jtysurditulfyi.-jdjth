@@ -16,7 +16,7 @@ namespace ShipGame.Actor
         private float speed = 6.0f;
         private IGameObjectMediator mediator;//ゲームオブジェクト仲介者
         public Ship(Vector2 position, float rotation, Vector2 origin, GameDevice gameDevice,
-            IGameObjectMediator mediator,int score)
+            IGameObjectMediator mediator, int score)
             : base("green", position, rotation, origin, 32, 32, gameDevice)
         {
             isDeadFlag = false;
@@ -37,7 +37,7 @@ namespace ShipGame.Actor
         /// </summary>
         /// <param name="other"></param>
         public Ship(Ship other)
-            : this(other.position, other.rotation, other.origin, other.gameDevice, other.mediator,0)
+            : this(other.position, other.rotation, other.origin, other.gameDevice, other.mediator, 0)
         {
 
         }
@@ -50,19 +50,23 @@ namespace ShipGame.Actor
         {
             if (gameObject is Player)
             {
+                if (gameObject.CheckDirection(this) == Direction.Right)
+                {
+                    speed = 0;
+                }
                 isRide = false;
-                velocity = Vector2.Zero;
             }
             if (gameObject is Bermuda)
             {
                 isDeadFlag = true;
             }
+
         }
         public void ShipMove()
         {
             if (isRide)
             {
-                position.X += speed/3f;
+                position.X += speed / 3f;
             }
             else
             {
@@ -72,7 +76,9 @@ namespace ShipGame.Actor
 
         public override void Update(GameTime gameTime)
         {
+            //position.X += 2;
             ShipMove();
+            speed = 6.0f;
         }
     }
 }

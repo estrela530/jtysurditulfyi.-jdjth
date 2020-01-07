@@ -75,9 +75,11 @@ namespace ShipGame.Actor
                     //衝突判定
                     if (c1.IsCollision(c2))
                     {
+                        
                         //ヒット通知
                         c1.Hit(c2);
                         c2.Hit(c1);
+                        
                     }
                 }
             }
