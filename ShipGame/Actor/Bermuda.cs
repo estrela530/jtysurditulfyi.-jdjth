@@ -46,10 +46,7 @@ namespace ShipGame.Actor
 
             if(gameObject is Player)
             {
-                if (dir == Direction.Bottom)
-                {
-                    isDeadFlag = true;
-                }
+                // isDeadFlag = true;
             }
         }
 
