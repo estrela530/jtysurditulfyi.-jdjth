@@ -31,7 +31,7 @@ namespace ShipGame.Actor
 
         public Player(Vector2 position, float rotation, Vector2 origin, GameDevice gameDevice,
             IGameObjectMediator mediator)
-            : base("red", position, rotation, origin, 32, 32, gameDevice)
+            : base("ship2", position, rotation, origin, 32, 32, gameDevice)
         {
             velocity = Vector2.Zero;
             isDeadFlag = false;
@@ -131,10 +131,7 @@ namespace ShipGame.Actor
 
         public override void Update(GameTime gameTime)
         {
-
             PlayerMove();
-
-
         }
     }
 }
