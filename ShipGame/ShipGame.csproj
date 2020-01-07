@@ -46,6 +46,7 @@
     <Compile Include="Actor\GameObjectID.cs" />
     <Compile Include="Actor\GameObjectManager.cs" />
     <Compile Include="Actor\IGameObjectMediator.cs" />
+    <Compile Include="Actor\Island.cs" />
     <Compile Include="Actor\Player.cs" />
     <Compile Include="Actor\Ship.cs" />
     <Compile Include="Def\Screen.cs" />

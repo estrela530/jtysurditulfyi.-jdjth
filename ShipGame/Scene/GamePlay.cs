@@ -17,6 +17,7 @@ namespace ShipGame.Scene
         private Renderer renderer;
         private Player player;
         private Ship ship;
+        private Island island;
         private Bermuda bermuda;
         private bool IsEndFlag;
         private Vector2 startPlayerPosi = new Vector2(32 * 2, 32 * 12);
@@ -52,10 +53,13 @@ namespace ShipGame.Scene
 
             bermuda = new Bermuda(new Vector2(), new Vector2(),gameDevice, gameObjectManager);
 
+            island = new Island(new Vector2(), new Vector2(), gameDevice, gameObjectManager);
+
             //プレイヤーにIDを設定
             gameObjectManager.Add(player);
             gameObjectManager.Add(ship);
             gameObjectManager.Add(bermuda);
+            gameObjectManager.Add(island);
 
         }
 
