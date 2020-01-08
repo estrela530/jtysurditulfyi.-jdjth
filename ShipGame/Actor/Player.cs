@@ -22,7 +22,7 @@ namespace ShipGame.Actor
         private IGameObjectMediator mediator;//ゲームオブジェクト仲介者
         private double angle;
         private float flyingSpeed;
-        private int hitcounter;
+        public int hitcounter;
 
         private Vector2 upVec = new Vector2(0.0f, -1.0f);
 
@@ -98,7 +98,6 @@ namespace ShipGame.Actor
                 {
                     flyingSpeed = 0;
                 }
-                hitcounter = 0;
             }
         }
         public void PlayerMove()
