@@ -14,6 +14,7 @@ namespace ShipGame.Actor
     class Ship : GameObject
     {
         private float speed = 6.0f;
+        Player player;
         private IGameObjectMediator mediator;//ゲームオブジェクト仲介者
         public Ship(Vector2 position, float rotation, Vector2 origin, GameDevice gameDevice,
             IGameObjectMediator mediator, int score)
@@ -53,6 +54,7 @@ namespace ShipGame.Actor
                 if (gameObject.CheckDirection(this) == Direction.Right)
                 {
                     speed = 0;
+                    player.hitcounter = player.hitcounter + 1;
                 }
                 isRide = false;
             }

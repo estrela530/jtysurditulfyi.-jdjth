@@ -53,6 +53,7 @@ namespace ShipGame.Scene
                 {"green",path },
                 {"orage",path },
                 {"ship2",path },
+                {"number",path }
                 //ここから上追加
             };
 
