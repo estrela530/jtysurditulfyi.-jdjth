@@ -24,6 +24,7 @@ namespace ShipGame.Scene
         private Vector2 startOrigin = new Vector2(16, 16);
         private float startPlayerRota = 0;
         private Vector2 startBermudaPosi = new Vector2(600, 600);
+        private float score;
 
         public GamePlay()
         {
@@ -37,6 +38,19 @@ namespace ShipGame.Scene
             
             renderer.DrawTexture("backColor", Vector2.Zero);
             gameObjectManager.Draw(renderer);
+            if ((int)score / 1000 <= 9 && (int)score / 1000 >= 1)
+            {
+                renderer.DrawNumber("number", Vector2.Zero, score.ToString("f2"), 7);
+            }
+            if ((int)score / 100 <= 9 && (int)score / 100 >= 1)
+            {
+                renderer.DrawNumber("number", Vector2.Zero, score.ToString("f2"), 6);
+            }
+            if ((int)score / 10 <= 9 && (int)score / 10 >= 1)
+            {
+                renderer.DrawNumber("number", Vector2.Zero, score.ToString("f2"), 5);
+            }
+            renderer.DrawNumber("number", Vector2.Zero, score.ToString("f2"), 4);
             renderer.End();
         }
 
@@ -60,7 +74,7 @@ namespace ShipGame.Scene
             gameObjectManager.Add(ship);
             gameObjectManager.Add(bermuda);
             gameObjectManager.Add(island);
-
+            score = 0;
         }
 
         public bool IsEnd()
@@ -85,6 +99,8 @@ namespace ShipGame.Scene
             {
                 IsEndFlag = true;
             }
+
+            score = player.score;
         }
     }
 }

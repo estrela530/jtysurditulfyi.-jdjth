@@ -18,7 +18,7 @@ namespace ShipGame.Actor
         private double stickAngle;
         private float speed = 4.0f;
         private float weight;
-        private int score;
+        public int score;
         private IGameObjectMediator mediator;//ゲームオブジェクト仲介者
         private double angle;
         private float flyingSpeed;

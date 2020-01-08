@@ -22,6 +22,7 @@ namespace ShipGame.Actor
         protected Vector2 origin;//回転軸の位置
         protected int width;//幅
         protected int height;//高さ
+        protected int human;//乗っている人の数
         //
         protected int score;
         protected bool isRide;
