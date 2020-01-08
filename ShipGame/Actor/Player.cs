@@ -22,6 +22,7 @@ namespace ShipGame.Actor
         private IGameObjectMediator mediator;//ゲームオブジェクト仲介者
         private double angle;
         private float flyingSpeed;
+        private int hitcounter;
 
         private Vector2 upVec = new Vector2(0.0f, -1.0f);
 
@@ -40,6 +41,7 @@ namespace ShipGame.Actor
 
             weight = 0.0f;
             score = 0;
+            hitcounter = 0;
         }
 
         public override object Clone()
@@ -80,18 +82,23 @@ namespace ShipGame.Actor
             //島とあたったらweightが消える
             if (gameObject is Island)
             {
-                isRide = false ;
+                isRide = false;
             }
             //他船とあたったらweightが上がる
             if (gameObject is Ship)
             {
-                score+= gameObject.GetScore();
+                hitcounter = hitcounter + 1;
+                if (hitcounter == 1)
+                {
+                    score += gameObject.GetScore();
+                }
                 isRide = true;
                 velocity = Vector2.Zero;
-                if(stickAngle <=0)
+                if (stickAngle <= 0)
                 {
                     flyingSpeed = 0;
                 }
+                hitcounter = 0;
             }
         }
         public void PlayerMove()
@@ -113,11 +120,11 @@ namespace ShipGame.Actor
 
             velocity = flyingSpeed * direction;
 
-            if (stickDirection != Vector2.Zero&&!isRide)
+            if (stickDirection != Vector2.Zero && !isRide)
             {
                 position += (velocity / 10);
             }
-            else if (stickDirection != Vector2.Zero )
+            else if (stickDirection != Vector2.Zero)
             {
                 position += (velocity / 25);
             }
